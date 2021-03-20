@@ -21,7 +21,7 @@ public class AppTest {
     }
 
     @Test
-    public void testAddOneStudent() {
+    public void test1() {
         Student student = testBuilder.getStudent();
 
         service.addStudent(student);
@@ -31,7 +31,7 @@ public class AppTest {
     }
 
     @Test
-    public void testAddSameStudentTwice() {
+    public void test2() {
         Student student = testBuilder.getStudent();
         Student studentClone = testBuilder.getStudent();
 
@@ -44,7 +44,7 @@ public class AppTest {
     }
 
     @Test
-    public void testAddFaultyStudent() {
+    public void test3() {
         Student student = testBuilder.getFaultyStudent();
 
         try {
