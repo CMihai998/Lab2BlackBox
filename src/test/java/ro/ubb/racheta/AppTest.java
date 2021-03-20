@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 import ro.ubb.racheta.domain.Student;
 import ro.ubb.racheta.service.Service;
-import ro.ubb.racheta.validation.ValidationException;
 
 import java.util.concurrent.atomic.AtomicReference;
 
