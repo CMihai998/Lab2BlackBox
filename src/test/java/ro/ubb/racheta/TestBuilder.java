@@ -12,6 +12,8 @@ public class TestBuilder {
     public static String DEFAULT_NAME = "nume";
     public static Integer DEFAULT_GROUP = 932;
     public static String DEFAULT_EMAIL = "racheta@as_manca_o_ciorba.gov";
+    public static String EMPTY_STRING = "";
+    public static String NULL_STRING = null;
 
     //files
     public static String DEFAULT_STUDENT_XML_FILE = "testData/testStudentXMLFile.xml";
@@ -21,8 +23,30 @@ public class TestBuilder {
         return new Student(DEFAULT_ID, DEFAULT_NAME, DEFAULT_GROUP, DEFAULT_EMAIL);
     }
 
-    public Student getFaultyStudent() {
-        return new Student(null, null, -1, null);
+    public Student getStudentWithEmptyId() {
+        return new Student(EMPTY_STRING, DEFAULT_NAME, DEFAULT_GROUP, DEFAULT_EMAIL);
+    }
+
+    public Student getStudentWithNullId() {
+        return new Student(NULL_STRING, DEFAULT_NAME, DEFAULT_GROUP, DEFAULT_EMAIL);
+    }
+
+    public Student getStudentWithNegativeGroup() {
+        return new Student(DEFAULT_ID, DEFAULT_NAME, -1, DEFAULT_EMAIL);
+    }
+
+    public Student getStudentWithEmptyName() {
+        return new Student(DEFAULT_ID, EMPTY_STRING, DEFAULT_GROUP, DEFAULT_EMAIL);
+    }
+    public Student getStudentWithNullName() {
+        return new Student(DEFAULT_ID, NULL_STRING, DEFAULT_GROUP, DEFAULT_EMAIL);
+    }
+
+    public Student getStudentWithEmptyEmail() {
+        return new Student(DEFAULT_ID, DEFAULT_NAME, DEFAULT_GROUP, EMPTY_STRING);
+    }
+    public Student getStudentWithNullEmail() {
+        return new Student(DEFAULT_ID, DEFAULT_NAME, DEFAULT_GROUP, NULL_STRING);
     }
 
     public StudentValidator getStudentValidator() {

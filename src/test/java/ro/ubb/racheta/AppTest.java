@@ -11,8 +11,9 @@ import java.util.concurrent.atomic.AtomicReference;
 import static org.junit.Assert.assertTrue;
 
 public class AppTest {
-    TestBuilder testBuilder = new TestBuilder();
+    TestBuilder testBuilder;
     Service service;
+
     @Before
     public void before() {
         testBuilder = new TestBuilder();
@@ -37,22 +38,75 @@ public class AppTest {
         service.addStudent(student);
         service.addStudent(studentClone);
 
-
-
         assertTrue(getStudentsCount().equals(1));
     }
 
     @Test
     public void test3() {
-        Student student = testBuilder.getFaultyStudent();
+        testStudentWithNullId();
+        testStudentWithEmptyId();
+        testStudentWithNullName();
+        testStudentWithEmptyName();
+        testStudentWithNullEmail();
+        testStudentWithEmptyEmail();
+        testStudentWithNegativeGroup();
+    }
 
+    private void testStudentWithNullId() {
         try {
-            service.addStudent(student);
+            service.addStudent(testBuilder.getStudentWithNullId());
         } catch (Exception exception) {
             assertTrue(getStudentsCount().equals(0));
         }
     }
 
+    private void testStudentWithEmptyId() {
+        try {
+            service.addStudent(testBuilder.getStudentWithEmptyId());
+        } catch (Exception exception) {
+            assertTrue(getStudentsCount().equals(0));
+        }
+    }
+
+    private void testStudentWithNullName() {
+        try {
+            service.addStudent(testBuilder.getStudentWithNullName());
+        } catch (Exception exception) {
+            assertTrue(getStudentsCount().equals(0));
+        }
+    }
+
+    private void testStudentWithEmptyName() {
+        try {
+            service.addStudent(testBuilder.getStudentWithEmptyName());
+        } catch (Exception exception) {
+            assertTrue(getStudentsCount().equals(0));
+        }
+    }
+
+    private void testStudentWithNullEmail() {
+        try {
+            service.addStudent(testBuilder.getStudentWithNullEmail());
+        } catch (Exception exception) {
+            assertTrue(getStudentsCount().equals(0));
+        }
+    }
+
+    private void testStudentWithEmptyEmail() {
+        try {
+            service.addStudent(testBuilder.getStudentWithEmptyEmail());
+        } catch (Exception exception) {
+            assertTrue(getStudentsCount().equals(0));
+        }
+    }
+
+    private void testStudentWithNegativeGroup() {
+        try {
+            service.addStudent(testBuilder.getStudentWithNegativeGroup());
+        } catch (Exception exception) {
+            assertTrue(getStudentsCount().equals(0));
+        }
+    }
 
 
     @After
