@@ -74,6 +74,24 @@ public class IntegrationTesting {
                 .count() == 1);
     }
 
+    @Test
+    public void topDownIncremental() {
+        Student student = testBuilder.getStudent();
+        service.addStudent(student);
+        assertTrue(service.findStudent(student.getID()).getID()
+                .equals(student.getID()));
+
+        Tema tema = testBuilder.getTema();
+        service.addTema(tema);
+        assertTrue(service.findTema(tema.getID()).getID()
+                .equals(tema.getID()));
+
+        Nota nota = testBuilder.getNota();
+        service.addNota(nota, TestBuilder.DEFAULT_FEEDBACK);
+        assertTrue(StreamSupport.stream(service.getAllNote().spliterator(), false)
+                .count() == 1);
+    }
+
     @After
     public void afterTest(){
         service.deleteNota(TestBuilder.DEFAULT_NOTA_ID);
