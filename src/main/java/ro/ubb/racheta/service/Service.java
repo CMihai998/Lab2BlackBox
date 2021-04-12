@@ -169,9 +169,6 @@ public class Service {
             if (predare-tema.getDeadline() == 1){
                 nota.setNota(nota.getNota()-2.5);
             }
-            else{
-                throw new ValidationException("Studentul nu mai poate preda aceasta tema!");
-            }
         }
         notaFileRepository.save(nota);
         String filename = "fisiere/" + student.getNume() + ".txt";

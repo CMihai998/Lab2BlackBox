@@ -111,7 +111,7 @@ public class AppTest {
 
     @After
     public void afterTest(){
-        service.deleteStudent(testBuilder.DEFAULT_ID);
+        service.deleteStudent(testBuilder.DEFAULT_STUDENT_ID);
     }
 
     private Integer getStudentsCount() {
