@@ -1,5 +1,6 @@
 package ro.ubb.racheta;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import ro.ubb.racheta.domain.Nota;
@@ -69,10 +70,14 @@ public class IntegrationTesting {
                 .equals(student.getID()));
         assertTrue(service.findTema(tema.getID()).getID()
                 .equals(tema.getID()));
+        assertTrue(StreamSupport.stream(service.getAllNote().spliterator(), false)
+                .count() == 1);
+    }
 
-
-
-//        assertTrue(StreamSupport.stream(service.getAllNote().spliterator(), false)
-//                .count() == 1);
+    @After
+    public void afterTest(){
+        service.deleteNota(TestBuilder.DEFAULT_NOTA_ID);
+        service.deleteStudent(testBuilder.DEFAULT_STUDENT_ID);
+        service.deleteTema(TestBuilder.DEFAULT_TEMA_ID);
     }
 }
